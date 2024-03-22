@@ -34,7 +34,7 @@ struct SinhVien
 };
 typedef struct SinhVien SV;
 
-void NhapSV(SV sv)
+void NhapSV(SV *sv)
 {
     int count;
     printf("Nhap So Luong Sinh Vien Can Them");
@@ -43,19 +43,19 @@ void NhapSV(SV sv)
     {
         printf("\nSinh Vien thu %d:\n",i+1);
         printf("Nhap Ho: ");
-        gets(sv.name.Ho);
+        gets(sv->name.Ho);
         printf("Nhap Ten: ");
-        scanf("%s",&sv.name.Ten);
+        scanf("%s",&sv->name.Ten);
         printf("Nhap Ngay Sinh: ");
-        scanf("%d %d %d",&sv.dateOfBirth.day,&sv.dateOfBirth.month,&sv.dateOfBirth.year);
+        scanf("%d %d %d",&sv->dateOfBirth.day,&sv->dateOfBirth.month,&sv->dateOfBirth.year);
         printf("Nhap Gioi Tinh");
-        scanf("%s",&sv.sex);
+        scanf("%s",&sv->sex);
         printf("Nhap dia chi");
-        scanf("%s",&sv.address);
+        scanf("%s",&sv->address);
         printf("Nhap nganh hoc: ");
-        scanf("%s",&sv.Lop.Faculity);
+        scanf("%s",&sv->Lop.Faculity);
         printf("Nhap nam hoc");
-        scanf("%d",&sv.Lop.NamHoc);
+        scanf("%d",&sv->Lop.NamHoc);
     }
 }
 
@@ -73,12 +73,14 @@ void MainMenu()
         printf("7.In danh sach sinh vien ra man hinh\n");
         printf("8.In danh sach sinh vien ra file");
         printf("0.Thoat");
+        printf("\n--------------------------------------------------");
+        printf("\nNhap lua chon cua ban: ");
     
         scanf("%d",&key);
         switch (key)
         {
             case '1':
-                /* code */
+                
                 break;
             default:
                 printf("\nKhong co chuc nang nay");
