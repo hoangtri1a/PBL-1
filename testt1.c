@@ -5,12 +5,6 @@
 
 const int MAX_SIZE = 100;
 
-struct Date
-{
-    int day;
-    int month;
-    int year;
-};
 
 struct Name
 {
@@ -28,7 +22,7 @@ struct Class
 struct SinhVien
 {
     struct Name name;
-    struct Date dateOfBirth;
+    char Date[11];
     char sex[5];
     char address[30];
     struct Class Lop;
@@ -45,22 +39,32 @@ typedef struct MaSV MSSV;
 SV list[MAX_SIZE];
 MSSV mssv[MAX_SIZE];
 
-void NhapSV(SV *sv)
+void XoaEnter()
 {
-    printf("Nhap Ho: ");
-    gets(sv->name.Ho);
-    printf("Nhap Ten: ");
-    scanf("%s",&sv->name.Ten);
-    printf("Nhap Ngay Sinh: ");
-    scanf("%d %d %d",&sv->dateOfBirth.day,&sv->dateOfBirth.month,&sv->dateOfBirth.year);
-    printf("Nhap Gioi Tinh");
-    scanf("%s",&sv->sex);
-    printf("Nhap dia chi");
-    scanf("%s",&sv->address);
-    printf("Nhap nganh hoc: ");
-    scanf("%s",&sv->Lop.Faculity);
-    printf("Nhap nam hoc");
-    scanf("%d",&sv->Lop.NamHoc);
+	
+}
+
+void NhapSV(SV *Sv)
+{
+	SV sv;
+    printf("\nNhap Ten: ");
+    fgets(sv.name.Ten,sizeof(sv.name.Ten),stdin);
+    getchar();
+    printf("\nNhap Ho: ");
+    fgets(sv.name.Ho,sizeof(sv.name.Ho),stdin);
+    getchar();
+    printf("\nNhap Ngay Sinh: ");
+    fgets(sv.Date,sizeof(sv.Date),stdin);
+    getchar();
+    printf("\nNhap Gioi Tinh");
+    fscanf(file,"%s",&sv.sex);
+    printf("\nNhap dia chi");
+    fscanf(file,"%s",&sv.address);
+    printf("\nNhap nganh hoc: ");
+    fscanf(file,"%s",&sv.Lop.Faculity);
+    printf("\nNhap nam hoc");
+    fscanf(file,"%d",&sv.Lop.NamHoc);
+    *Sv=sv;
 }
 
 void NhapSVN(SV list[],int n)
@@ -69,15 +73,17 @@ void NhapSVN(SV list[],int n)
     scanf("%d",&n);
     for (int i = 0; i<n; i++)
     {
-        printf("\nNhap SV thu: %d: ",i+1);
+        printf("\nNhap SV thu %d: ",i+1);
         NhapSV(&list[i]);
     }
 }
 
 void MainMenu()
 {
-    int n;
-    int key;
+    bool nhap=false;
+    int key,n;
+    do
+    	{
         printf("--------------QUAN LI DANH SACH SINH VIEN--------------\n\n");
         printf("1.Them sinh vien\n");
         printf("2.Sap xep danh sach\n");
@@ -86,34 +92,38 @@ void MainMenu()
         printf("5.Cap ma sinh vien\n");
         printf("6.Cap email\n");
         printf("7.In danh sach sinh vien ra man hinh\n");
-        printf("8.In danh sach sinh vien ra file");
-        printf("0.Thoat");
-    
+        printf("8.In danh sach sinh vien ra file\n");
+        printf("0.Thoat\n");
+    	printf("Nhap yeu cau cua ban\n");
         scanf("%d",&key);
+        getchar();
         switch (key)
         {
-            case '1':
+            case 1:
                 NhapSVN(list,n);
+                nhap=true;
                 break;
-            case '2':
+            case 2:
                 break;
-            case '3':
+            case 3:
                 break;
-            case '4':
+            case 4:
                 break;
-            case '5':
+            case 5:
                 break;
+            case 0:
             default:
                 printf("\nKhong co chuc nang nay");
                 printf("\nNhan phim bat ky de tiep tuc");
-                break;
         }
+    }
+    while(nhap);
 }
 
 
 int main()
 {
-    MainMenu;
+    MainMenu();
 
     return 0;
 }
