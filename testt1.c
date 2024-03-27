@@ -46,6 +46,19 @@ void XoaEnter(char x[])
 		x[len-1] = '\0';	
 }
 
+void namefile()
+{
+}
+
+void readfile()
+{
+
+}
+
+void writefile()
+{
+}
+
 void NhapSV(SV *Sv)
 {
 	SV sv;
