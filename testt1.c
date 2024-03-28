@@ -39,6 +39,21 @@ typedef struct MaSV MSSV;
 SV list[MAX_SIZE];
 MSSV mssv[MAX_SIZE];
 
+void XoaEnter(char[x]);
+void namefile();
+void readfile();
+void writefile();
+void NhapSV(SV *Sv);
+void NhapSVN(SV list[],int n);
+void SapXepSV(SV list[],int n);
+void CapMSSV();
+void CapEmail();
+void TimSVtheoID();
+void TimSVtheoTen();
+void XoaSV();
+void XuatSV(list [],int n);
+
+
 void XoaEnter(char x[])
 {
 	size_t len = strlen(x);
