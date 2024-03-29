@@ -57,7 +57,7 @@ void XuatSV(list [],int n);
 void XoaEnter(char x[])
 {
 	size_t len = strlen(x);
-	if (x[len-1])=='\n')
+	if (x[len-1]=='\n')
 		x[len-1] = '\0';	
 }
 
